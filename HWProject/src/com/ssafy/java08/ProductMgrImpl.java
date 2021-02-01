@@ -2,18 +2,17 @@ package com.ssafy.java08;
 
 import java.util.ArrayList;
 
-
 public class ProductMgrImpl implements IProductMgr {
 
 	ArrayList<Product> products = new ArrayList<Product>();
-	
+
 	@Override
 	public void add(Product p) throws DuplicateException {
 		for (int i = 0; i < products.size(); i++)
 			if (p.getName().equals(products.get(i).getName())) throw new DuplicateException(p);
 		products.add(p);
 	}
-
+	
 	@Override
 	public void list() {
 		for (Product p : products)
