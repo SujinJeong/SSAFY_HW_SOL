@@ -31,6 +31,7 @@ public class Per_Comb_Power {
 	    powerSet(cnt+1, visited);
 	}
 	
+	// 중복순열일 경우에는 visited와 관련된 코드 모두 없어짐. 왜냐면 방문한 원소도 방문할 수 있기 때문이다!
 	public static void makePermutation(int cnt, int[] selected, boolean[] visited) {
 		if (cnt == N) {
 			System.out.println(Arrays.toString(selected));
@@ -46,7 +47,8 @@ public class Per_Comb_Power {
 		}
 	}
 
-	// cnt가 nCr에서 r의 의미, arr는 visited와 비슷 애초에 뽑힌것만 arr에 담아줌
+	// cnt가 nCr에서 r의 의미, selected는 visited와 비슷 애초에 뽑힌것만 selected에 담아줌
+	// start: 어디 원소부터 뽑을건지
 	public static void makeCombination(int cnt, int[] selected, int start) {
 		if (cnt == N) {
 			System.out.println(Arrays.toString(selected));
@@ -55,6 +57,7 @@ public class Per_Comb_Power {
 
 		for (int i = start; i < num.length; i++) {
 			selected[cnt] = num[i];
+			// 중복 조합일 경우에는 자신과 같은 수부터 출발해야하므로 i+1이 아니라 i로시작!
 			makeCombination(cnt + 1, selected, i + 1);
 		}
 	}
