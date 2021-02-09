@@ -6,7 +6,10 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
-
+/*
+1. íë¦„: bfsì´ìš© ì•ˆì „ë„ 0ì¸ê±° ë‹¤ íƒìƒ‰ -> ì•ˆì „ë„ 1ì¸ê±° íƒìƒ‰-> ì•ˆì „ë„ 1ì—ì„œ ë˜ ë¹„íŠ¸ 1ì°¨ì´ê°€ ë°œìƒí•˜ë©´ 2ì¸ ì›ë¦¬
+2. ì•ˆì „ë„ 0ì¸ê±° qì— ì‹¹ë‹¤ ë„£ì–´ì£¼ê³  ë¹„êµ, ê·¸ ë‹¤ìŒ visited ì²˜ë¦¬í›„ ì•ˆì „ë„ 1ì¸ê±° ì‹¹ë‹¤ qì— ë„£ì–´ì£¼ê³  ë¹„êµ .... ë°˜ë³µ
+ */
 public class Q20304 {
 	private static class Node {
 		int num, count;
@@ -32,43 +35,35 @@ public class Q20304 {
 		st = new StringTokenizer(br.readLine());
 		for (int i = 0; i < M; i++) {
 			int tmp = Integer.parseInt(st.nextToken());
-			// ¾ÈÀüµµ 0ÀÎ¾ÖµéºÎÅÍ ÀÏ´Ü °è»ê = °°Àº¼ö³¢¸®ÀÇ ºñ±³¶ó ¹«Á¶°Ç 0
+			// í•´ì»¤ê°€ ìž…ë ¥í•œ ë¹„ë°€ë²ˆí˜¸ëŠ” ë¬´ì¡°ê±´ ë³´ì•ˆì„± 0ì´ê¸° ë•Œë¬¸ì— ì´ê²ƒë¶€í„° ë„£ì–´ì£¼ê¸°
 			q.offer(new Node(tmp, 0));
 			visit[tmp] = true;
 		}
 		
 		
+		//qëŠ” ìµœëŒ€ Në²ˆë§Œí¼ ëŒì•„ê°€ê³ , visitedê°€ ëª¨ë‘ trueì´ë©´ qì— ë”ì´ìƒ ë„£ì„ ê²ƒì´ ì—†ê¸° ë•Œë¬¸ì— íƒˆì¶œ
 		while (!q.isEmpty()) {
-			
-			
-			// ÇØÄ¿°¡ ·Î±×ÀÎ ½ÃµµÇÑ ¹øÈ£ ÇÏ³ª¾¿ •ûÁÖ±â
 			Node n = q.poll();
-			
-			// ¾ÈÀüµµ ÃÖ°í°ª °è»ê
+			// ë³´ì•ˆì„± ê°€ìž¥ ë†’ì€ ê²°ê³¼ ë½‘ê¸°
 			result = Math.max(result, n.count);
 			
-			// a & ÀÌÁø¼ö => µÑ´Ù 1ÀÎ °æ¿ì¸¸ 1 Ãâ·Â
-			// ÀÌÁø¼ö·Î ³ªÅ¸³»¾úÀ» ¶§ x¹øÂ° ÀÌÁø¼ö°¡ 1ÀÎÁö 0ÀÎÁö¸¦ ºü¸£°Ô ¾Ë¾Æ³¾ ¼ö ÀÖ´Ù
-			// 1À» ÇÏ³ª¾¿ ¿Å±â¸é¼­ ºñ±³ÇÏ±â ‹š¹®¿¡ a¿Í ÇÏ³ªÀÇ ¼ýÀÚ¸¸ ´Ù¸¥ ÀÌÁø¼öÀÇ Á¾·ù ¾Ë ¼ö ÀÖÀ½
-			// Áï, 1ºñÆ® ´Ù¸£¸é ¾ÈÀüµµ°¡ 1 ³ôÀº °Í µµÃâ°¡´É
-			
+			// ë¹„íŠ¸ í•˜ë‚˜ì”© ë°€ë©´ì„œ ì „ë¶€ ë‹¤ ë°”ê¿”ë³´ê¸° ë§Œì•½ 1000 ì´ë©´ 4ë²ˆì˜ ì—°ì‚°ì´ ì¼ì–´ë‚¨
 			for (int t = 1; t <= N; t <<= 1) {
 				int num;
-				// ºñÆ® ÇÏ³ª¶óµµ ´Ù¸¦¶§
+				// 1-> 0ìœ¼ë¡œ ë°”ê¾¸ê¸°
 				if ((n.num & t) > 0)
-					//numÀº 1ºñÆ®ÀÌ»ó ´Ù¸¥ ¼ö ÀúÀå
 					num = n.num-t;
-				// ºñÆ® ´Ù¸¥¾Ö ¾øÀ»¶§
+				// 0-> 1ë¡œ ë°”ê¾¸ê¸°
 				else
 					num = n.num+t;
 				
-				// num <= ¹üÀ§°Ë»ç(À¯È¿¼º°Ë»ç), visit´Â ¹æ¹®ÇÑÀû¾ø´ÂÁö
+				// ë¹„íŠ¸ë¥¼ ë°”ê¿”ì¤¬ëŠ”ë° ë°©ë¬¸í•œì ìžˆê±°ë‚˜ N ë²”ìœ„ë¥¼ ë„˜ì–´ê°ˆê²½ìš°
 				if (num > N || visit[num]) continue;
 				
+				// 1~Nì¤‘ ë°©ë¬¸í•œ ìˆ«ìžëŠ” trueë¡œ ë³€ê²½
 				visit[num] = true;
-				// Àü ¾ÈÀüµµº¸´Ù ³ôÀº¾Öµé Ã£Àº°Ç ¾ÈÀüµµ+1 ÇØ¼­ Å¥¿¡ Áý¾î³Ö±â
+				// ìƒˆë¡œ ê°±ì‹ ëœ ì•ˆì „ë„ë“¤ì„ ë‹¤ì‹œ ë¹„êµí•˜ì—¬ ë” í° ì•ˆì „ë„ë¥¼ ì°¾ê¸°ìœ„í•´ ì•ˆì „ë„+1í•´ì„œ qì— push
 				q.add(new Node(num, n.count + 1));
-				
 			}
 		}
 		
