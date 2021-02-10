@@ -3,17 +3,13 @@ package com.ssafy.SOL_0208;
 public class SinglyLinkedList {
 	private Node head;
 	
-	// ¿¬°á¸®½ºÆ®¿¡ Ã¹¹ø¤Š ¿ø¼Ò·Î »ğÀÔÇÏ±â (ÀÌ°Å´Â ÇÊ¿ä!)
 	public void addFirstNode(String data) {
-		// ¸¸¾à °ø¹é¸®½ºÆ®ÀÌ¸é nullÀÌ ºÙ±â ¶§¹®¿¡ »ó°ü¾øÀ½
 		Node newNode = new Node(data, head);
 		head = newNode;
 	}
 	
-	// ¿¬°á¸®½ºÆ®ÀÇ ¸¶Áö¸· ¿ø¼Ò Ã£¾Æ ¹İÈ¯
 	public Node getLastNode() {
 		Node currNode = head;
-		// nullÀÌ¸é °ø¹é¸®½ºÆ®
 		if (currNode != null) {
 			while (currNode.link != null) {
 				currNode = currNode.link;
@@ -23,25 +19,20 @@ public class SinglyLinkedList {
 		return currNode;
 	}
 	
-	// ¿¬°á¸®½ºÆ®¿¡ ¸¶Áö¸· ¿ø¼Ò·Î »ğÀÔÇÏ±â
 	public void addLastNode(String data) {
-		// °ø¹é¸®½ºÆ®ÀÎ°æ¿ì
 		if (head == null) {
-			// ¸Ç ¾Õ¿¡ »ğÀÔÇÏ´Â °Í°ú ¶È°°À½
 			addFirstNode(data);
 			return;
 		}
 		
 		Node lastNode = getLastNode();
-		// linkÀº ¸¶Áö¸·ÀÌ¶ó nullÀÌ¹Ç·Î ÁöÁ¤¾ÈÇØµµ µÈ´Ù
 		Node newNode = new Node(data);
 		lastNode.link = newNode;
 	}
 	
-	// Áß°£³ëµå »ğÀÔ
 	public void insertAferNode(Node preNode, String data) {
 		if (preNode == null) {
-			System.out.println("¼±Çà ³ëµå°¡ ¾ø¾î »ğÀÔÀÌ ºÒ°¡ÇÕ´Ï´Ù.");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½Õ´Ï´ï¿½.");
 			return;
 		}
 		
@@ -49,7 +40,7 @@ public class SinglyLinkedList {
 		preNode.link = newNode;
 	}
 	
-	// ¿ì¸®°¡ ¿øÇÏ´Â ³ëµå¸¦ ¾Õ¿¡¼­ºÎÅÍ Å½»öÇØ¼­ Ã£±â (ÀÌ°Å´Â ÇÊ¿ä!)
+	// ï¿½ì¸®ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½å¸¦ ï¿½Õ¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å½ï¿½ï¿½ï¿½Ø¼ï¿½ Ã£ï¿½ï¿½ (ï¿½Ì°Å´ï¿½ ï¿½Ê¿ï¿½!)
 	public Node getNode(String data) {
 		for (Node currNode = head; currNode != null; currNode = currNode.link)
 			if (currNode.data.equals(data))
@@ -60,23 +51,20 @@ public class SinglyLinkedList {
 	public Node getPreviousNode(Node target) {
 		Node currNode = head, nextNode = null;
 		if (currNode != null) {
-			// ÀÚ½ÅÀÇ ´ÙÀ½¸µÅ©°¡ nullÀÌ ¾Æ´Ï°í
+			// ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å©ï¿½ï¿½ nullï¿½ï¿½ ï¿½Æ´Ï°ï¿½
 			while((nextNode = currNode.link) != null) {
-				// targetÀ» ´ÙÀ½³ëµå·Î °¡Áö°í ÀÖ´Â ³ëµå°¡ ÀÌÀü ³ëµå!
 				if (nextNode == target)
 					return currNode;
 			}
-			// ³ª¿Ã¶§±îÁö °è¼Ó µû¶ó°¡¾ßÇÏ´Ï±î ´ÙÀ½³ëµå·Î Áö±İ ³ëµå ¹Ù²ãÁÖ±â
 			currNode = nextNode;
 		}
 		
 		return null;
 	}
 	
-	// ÇØ´ç µ¥ÀÌÅÍ¸¦ °¡Áö°í ÀÖ´Â ³ëµå »èÁ¦
 	public void deleteNode(String data) {
 		if (head == null) {
-			System.out.println("°ø¹é¸®½ºÆ®¿©¼­ »èÁ¦°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.");
+			System.out.println("ë¹ˆ ë¦¬ìŠ¤íŠ¸ ì…ë‹ˆë‹¤");
 			return;
 		}
 		Node targetNode = getNode(data);
@@ -84,12 +72,11 @@ public class SinglyLinkedList {
 		
 		Node preNode = getPreviousNode(targetNode);
 		
-		// Áö¿ì·Á°í ÇÏ´Â ³ëµåÀÇ ÀÌÀü³ëµå°¡ ¾ø°í ÀÚ±âÀÚ½ÅÀÌ Ã¹¹øÂ° NodeÀÏ¶§, Çìµå¸¦ µÚ·Î ³Ñ°ÜÁÜ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú±ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ Ã¹ï¿½ï¿½Â° Nodeï¿½Ï¶ï¿½, ï¿½ï¿½å¸¦ ï¿½Ú·ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½
 		if (preNode == null && targetNode == head)
 			head = targetNode.link;
 		else preNode.link = targetNode.link;
 		
-		// Áö¿öÁö·Á´Â ³ëµå´Â ´õÀÌ»ó link¸¦ ¹°°í ÀÖÀ» ÇÊ¿ä°¡ ¾øÀ½
 		targetNode.link = null;
 	}
 	
