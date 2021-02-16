@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Comparator;
 
 /*
 최고온도 기준 오름차순 정렬
@@ -16,30 +17,49 @@ import java.util.Arrays;
 
 public class JO1828 {
 
+	public static class Point {
+		int min, max;
+
+		public Point(int min, int max) {
+			super();
+			this.min = min;
+			this.max = max;
+		}
+		
+	}
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int cnt = 1;
 		int n = Integer.parseInt(br.readLine());
 
-		int[] min_arr = new int[n];
-		int[] max_arr = new int[n];
+		Point[] arr = new Point[n];
 		
 		// input
 		for (int i = 0; i < n; i++) {
 			String[] line = br.readLine().split(" ");
-			min_arr[i] = Integer.parseInt(line[0]);
-			max_arr[i] = Integer.parseInt(line[1]);
+			int a = Integer.parseInt(line[0]);
+			int b = Integer.parseInt(line[1]);
+			arr[i] = new Point(a, b);
 		}
 		
-		Arrays.sort(max_arr);
-		int max = max_arr[0];
-		for (int i = 0; i < min_arr.length; i++)
+		Arrays.sort(arr, new Comparator<Point>() {
+
+			@Override
+			public int compare(Point o1, Point o2) {
+				// 본인에서 빼면 오름차순
+				return o1.max - o2.max;
+			}
+			
+		});
+		
+		int max = arr[0].max;
+		for (int i = 0; i < n; i++)
 			// 가장 낮은 최고 온도가 커버가 안되기 때문!
-			if (max < min_arr[i]) {
+			if (max < arr[i].min) {
 				// 냉장고 한대 더
 				cnt++;
 				// 냉장고 하나 더 만들었으므로 최고온도 갱신
-				max = max_arr[i];
+				max = arr[i].max;
 			}
 		
 		System.out.println(cnt);
