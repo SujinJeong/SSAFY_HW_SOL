@@ -1,0 +1,32 @@
+JavaProject3  --- JavaProject
+     src
+       웹액스 수업---------------------------------------------
+       ssafy_0222
+          MyThreadEx1.java
+          MyThreadEx2.java
+          MyThreadEx3.java
+          MyThreadEx4.java
+          SyncThreadTest.java   (동기화 처리)
+          RoseTest.java         (우선순위)
+
+           
+       유투브 방송 -------------------------------------------
+       Live07_0222
+          CoronaWithoutThreadTest.java
+          CoronaThreadTest1.java 
+          CoronaThreadTest2.java
+          CoronaThreadTest3.java 
+          CoronaThreadTest4.java 
+          CoronaThreadTest5.java
+          MedicineThreadSyncTest1.java
+          MedicineThreadSyncTest2.java          
+      Live07_0223
+          NetworkInetAddressTest.java                         
+          NetworkSimpleClient.java  /  NetworkSimpleServer.java  
+          NetworkThreadServer.java  /  NetworkThread.java     
+          NetworkHttpServer.java     
+          NetworkHttpServerHospital.java
+          ChatServer.java / ChatClient.java / ChatClientSwing.java / ChatConnect.java
+                  
+       
+
