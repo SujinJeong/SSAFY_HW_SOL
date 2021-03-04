@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+	font-size: 2.5em;
+	color: GoldenRod;
+	text-shadow: 3px 3px black;
+	text-align: center;
+}
+
+fieldset {
+	font-size: 1.5em;
+	text-align: center;
+	width: 500px;
+}
+
+legend {
+	color: darkgreen;
+}
+
+hr {
+	background-color: GoldenRod;
+	height: 2px;
+}
+
+footer {
+	text-align: right;
+}
+
+input:focus {
+	outline: 2px solid #ff0000;
+}
+</style>
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Become a Member</h1>
+	<hr>
+	<div>
+		<form>
+			<fieldset>
+				<legend>
+					<strong>Registration Information</strong>
+				</legend>
+				Email: <input id="email" type="email" name="email"
+					required="required" autofocus="autofocus"
+					style="border: 2px solid #ff0000;"> <br> Password: <input
+					id="password" type="password" name="password"
+					placeholder="At least 6 letters of numbers" required="required"
+					style="border: 2px solid #ff0000;"> <br> Verify
+				Password: <input id="pwcheck" type="password" name="pwcheck"
+					required="required" style="border: 2px solid #ff0000;"><br>
+
+			</fieldset>
+
+			<fieldset>
+				<legend>
+					<strong>Member Information</strong>
+				</legend>
+				First Name: <input id="firstname" type="text" name="firstname"
+					required="required" autofocus="autofocus"
+					style="border: 2px solid #ff0000;"> <br> Last Name: <input
+					id="lastname" type="text" name="lastname" required="required"
+					style="border: 2px solid #ff0000;"> <br> Address: <input
+					id="address" type="text" name="address"><br> City: <input
+					id="city" type="text" name="city" required="required"
+					style="border: 2px solid #ff0000;"><br> State: <input
+					id="state" type="text" name="state" placeholder="2-character code"
+					required="required" style="border: 2px solid #ff0000;"><br>
+				Zip Code: <input id="zipcode" type="number" name="zipcode"
+					placeholder="5 or 9 digits" required="required"
+					style="border: 2px solid #ff0000;"><br> Phone Number:
+				<input id="phone" type="text" name="phone"
+					placeholder="999-999-9999"><br>
+			</fieldset>
+			<fieldset>
+				<legend>
+					<strong>Membership Information</strong>
+				</legend>
+				Membership Type: <select name="membership" id="membership">
+					<option value="Junior">Junior</option>
+					<option value="Senior">Senior</option>
+				</select> <br> Starting Date: <input type="date" name="registerdate"
+					value="연도-월-일" required="required"
+					style="border: 2px solid #ff0000;" /> <br> Tickets for Guests:
+				<input type="number" name="tickets"> <br>
+			</fieldset>
+			<fieldset>
+				<legend>
+					<strong>Submit Your MemberShip</strong>
+				</legend>
+				<input type="submit" value="Submit"> <input type="reset"
+					value="Reset fields">
+			</fieldset>
+		</form>
+	</div>
+	<hr>
+	
+	<footer> © Copyright 2013 SCSA. </footer>
+</body>
+</html>
