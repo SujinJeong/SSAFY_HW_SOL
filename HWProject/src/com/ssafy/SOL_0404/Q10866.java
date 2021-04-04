@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class Q10845 {
+public class Q10866 {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -16,18 +16,21 @@ public class Q10845 {
 
 		for (int i = 0; i < n; i++) {
 			String[] s = br.readLine().split(" ");
-			if (s[0].equals("push")) {
-				q.offer(Integer.parseInt(s[1]));
-			} else if (s[0].equals("front")) {
+			
+			if (s[0].equals("push_front")) {
+				q.offerFirst(Integer.parseInt(s[1]));
+			} else if (s[0].equals("push_back")) {
+				q.offerLast(Integer.parseInt(s[1]));
+			} else if (s[0].equals("pop_front")) {
 				if (q.isEmpty())
 					sb.append(-1).append("\n");
 				else
-					sb.append(q.peek()).append("\n");
-			} else if (s[0].equals("pop")) {
+					sb.append(q.pollFirst()).append("\n");
+			} else if (s[0].equals("pop_back")) {
 				if (q.isEmpty())
 					sb.append(-1).append("\n");
 				else
-					sb.append(q.poll()).append("\n");
+					sb.append(q.pollLast()).append("\n");
 			} else if (s[0].equals("size")) {
 				sb.append(q.size()).append("\n");
 			} else if (s[0].equals("empty")) {
@@ -35,6 +38,11 @@ public class Q10845 {
 					sb.append(1).append("\n");
 				else
 					sb.append(0).append("\n");
+			} else if (s[0].equals("front")) {
+				if (q.isEmpty())
+					sb.append(-1).append("\n");
+				else
+					sb.append(q.peekFirst()).append("\n");
 			} else if (s[0].equals("back")) {
 				if (q.isEmpty())
 					sb.append(-1).append("\n");
