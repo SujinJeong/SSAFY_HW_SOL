@@ -76,6 +76,8 @@ public class BJ_Q2174 {
 	}
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
 		String[] s = br.readLine().split(" ");
 		c = Integer.parseInt(s[0]);
 		r = Integer.parseInt(s[1]);
@@ -129,14 +131,15 @@ public class BJ_Q2174 {
 		}
 		
 		if (rslt == 0) {
-			System.out.println("OK");
+			sb.append("OK");
 		} else if (rslt == -1) {
-			System.out.println("Robot " + now_robot + " crashes into the wall");
+			sb.append("Robot " + now_robot + " crashes into the wall");
 
 		} else {
-			System.out.println("Robot " + now_robot + " crashes into robot " + rslt);
+			sb.append("Robot " + now_robot + " crashes into robot " + rslt);
 		}
 		
+		System.out.println(sb);
 
 	}
 
